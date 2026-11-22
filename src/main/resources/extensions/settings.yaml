@@ -1,0 +1,36 @@
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: blogsclub-push-settings
+spec:
+  forms:
+    - group: basic
+      label: 推送设置
+      formSchema:
+        - $formkit: checkbox
+          name: status
+          label: 开启推送
+          value: false
+          help: 关闭后不再扫描文章，也不会推送
+        - $formkit: text
+          name: pushId
+          label: 推送 ID
+          validation: required
+          help: BlogsClub 分配的推送 ID，会出现在 Authorization 头中
+        - $formkit: password
+          name: pushKey
+          label: 推送 KEY
+          validation: required
+          help: 仅参与本地 HMAC-SHA256 签名，绝不会随请求上送
+        - $formkit: number
+          name: posts
+          label: 首次同步文章数
+          value: 10
+          min: 0
+          max: 50
+          help: 首次启用时推送最近 N 篇已发布文章；填 0 表示只推送之后的新文章
+        - $formkit: text
+          name: siteUrl
+          label: 文章链接域名
+          placeholder: https://blog.example.com
+          help: 留空则使用 Halo 的「外部访问地址」。必须与 BlogsClub 登记的博客域名一致

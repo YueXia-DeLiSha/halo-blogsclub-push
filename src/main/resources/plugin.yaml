@@ -1,0 +1,20 @@
+apiVersion: plugin.halo.run/v1alpha1
+kind: Plugin
+metadata:
+  name: blogsclub-push
+spec:
+  enabled: true
+  requires: ">=2.22.0"
+  version: 1.0.2
+  author:
+    name: 挽着红月缓缓走
+    website: https://github.com/yuexia-delisha
+  logo: logo.png
+  homepage: https://github.com/yuexia-delisha
+  repo: https://github.com/yuexia-delisha
+  displayName: "BlogsClub 推送"
+  description: "文章发布后按 BC-PUSH-V2 协议自动推送到 BlogsClub，支持控制台手动推送与内置去重。"
+  license:
+    - name: "MIT"
+  settingName: blogsclub-push-settings
+  configMapName: blogsclub-push-configmap

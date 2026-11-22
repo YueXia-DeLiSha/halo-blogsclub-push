@@ -1,0 +1,19 @@
+{
+  "name": "blogsclub-push-ui",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@halo-dev/components": "^2.21.0",
+    "@halo-dev/console-shared": "^2.21.0",
+    "vue": "^3.5.17"
+  },
+  "devDependencies": {
+    "@halo-dev/ui-plugin-bundler-kit": "^2.21.1",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "typescript": "~5.8.3",
+    "vite": "^6.0.0"
+  }
+}

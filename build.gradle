@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id "run.halo.plugin.devtools" version "0.9.0"
+}
+
+group = 'run.halo.blogsclub'
+version = '1.0.2'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform('run.halo.tools.platform:plugin:2.27.3')
+    compileOnly 'run.halo.app:api'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+    options.release = 21
+}
+
+// 把前端构建产物打进插件 jar 的 console/ 目录
+tasks.register('processUiResources', Copy) {
+    from layout.projectDirectory.dir('ui/build/dist')
+    into layout.buildDirectory.dir('resources/main/console')
+    shouldRunAfter tasks.named('processResources')
+}
+
+tasks.named('classes') {
+    dependsOn tasks.named('processUiResources')
+}
+
+halo {
+    version = '2.27.3'
+}
